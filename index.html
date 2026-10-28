@@ -286,8 +286,8 @@ body,.card,button,input{font-family:var(--serif)}
 @keyframes spreadIn{from{letter-spacing:.5em}to{letter-spacing:.14em}}
 .medal{top:21.5%;width:48cqw;height:48cqw;margin-left:-24cqw}
 .medal .nm{font-family:var(--head);font-weight:400;font-size:5.6cqw;line-height:1.2}
-.medal .n1{position:relative;top:2.6cqw}
-.medal .n2{position:relative;top:-2.6cqw}
+.medal .n1{position:relative;top:3.5cqw}
+.medal .n2{position:relative;top:-3.5cqw}
 .medal .amp{font-family:var(--serif);font-style:normal;font-weight:300;font-size:4.4cqw;margin:.6cqw 0}
 .invite{top:50%;font-family:var(--serif);font-style:normal;font-weight:300;font-size:3.1cqw;line-height:1.5;padding:0 8cqw;z-index:2}
 .couple{width:58cqw;margin-left:-28cqw;bottom:-8%;z-index:1}
@@ -301,13 +301,16 @@ body,.card,button,input{font-family:var(--serif)}
 .s3 .dt{font-family:var(--head);font-weight:700;font-size:8cqw;line-height:1.15}
 .s3 .yr{font-family:var(--head);font-weight:700;font-size:6cqw;letter-spacing:.2em;margin-right:-.2em}
 .s3 .venue small{font-family:var(--serif);font-weight:500;font-size:2.8cqw;letter-spacing:.35em;margin-right:-.35em}
-.s3 .venue b{font-family:var(--head);font-weight:400;font-size:7.4cqw;margin-top:1cqw}
+.s3 .txt{top:2%}
+.s3 .venue{margin-top:1.4cqw}
+.s3 .venue b{font-family:var(--head);font-weight:400;font-size:2.8cqw;line-height:1.25;margin-top:.8cqw;white-space:pre-line}
+.s3 .venue b::first-line{font-weight:700}
 
 /* scene 4 */
 .msg{font-family:var(--head);font-size:4.2cqw;line-height:1.55}
 .names{font-family:var(--head);font-style:normal;font-weight:700;font-size:4.7cqw}
 .names em{font-style:normal}
-.sub{font-family:var(--serif);font-weight:500;font-size:2.7cqw;letter-spacing:.12em}
+.sub{font-family:var(--serif);font-weight:700;font-size:3.2cqw;line-height:1.45;letter-spacing:.05em;white-space:pre-line}
 .btn{font-family:var(--serif);font-weight:500;font-size:2.9cqw;letter-spacing:.02em}
 
 /* RSVP sheet */
@@ -330,7 +333,7 @@ html[lang=mr] .s3 .save{font-size:4.4cqw;letter-spacing:.03em;margin-right:0}
 html[lang=mr] .s3 .dt{font-size:9cqw;font-weight:400}
 html[lang=mr] .s3 .yr{font-size:7cqw;letter-spacing:.04em;margin-right:0;font-weight:400}
 html[lang=mr] .s3 .venue small{font-size:3.4cqw;letter-spacing:.04em;margin-right:0}
-html[lang=mr] .s3 .venue b{font-size:8.6cqw}
+html[lang=mr] .s3 .venue b{font-size:2.8cqw}
 html[lang=mr] .msg{font-size:4.9cqw}
 html[lang=mr] .names{font-size:5.4cqw;font-weight:400}
 html[lang=mr] .sub{font-size:3.2cqw;letter-spacing:.03em}
@@ -397,9 +400,9 @@ html[lang=mr] .sheet p{font-size:3.7cqw}
     <div class="garland" data-slot="garland"></div>
     <div class="abs together" data-split data-i18n="together">TOGETHER WITH OUR FAMILIES</div>
     <div class="medal">
-      <div class="nm n1" data-i18n="bride">Rishabh</div>
+      <div class="nm n1" data-i18n="groom">Rishabh</div>
       <div class="amp">&amp;</div>
-      <div class="nm n2" data-i18n="groom">Vaishnavi</div>
+      <div class="nm n2" data-i18n="bride">Vaishnavi</div>
     </div>
     <div class="abs invite" data-i18n="invite">Invite you to celebrate their wedding</div>
     <div class="couple" data-slot="couple"></div>
@@ -434,7 +437,7 @@ html[lang=mr] .sheet p{font-size:3.7cqw}
       <span style="--i:1" data-i18n="m1">you to be part of our</span>
       <span style="--i:2" data-i18n="m2">special day.</span>
     </div>
-    <div class="abs names"><span data-i18n="bride">Vaishnavi</span> <em>&amp;</em> <span data-i18n="groom">Rishabh</span></div>
+    <div class="abs names"><span data-i18n="groom">Rishabh</span> <em>&amp;</em> <span data-i18n="bride">Vaishnavi</span></div>
     <div class="abs sub" data-i18n="sub">11 DECEMBER 2026 • ALISHAN</div>
   </section>
 
@@ -500,7 +503,7 @@ html[lang=mr] .sheet p{font-size:3.7cqw}
 
 /* ===================== CONFIG ===================== */
 const CONFIG = {
-  bride: 'Vaishnavi', groom: 'Rishabh', venue: 'Alishan',
+  bride: 'Vaishnavi', groom: 'Rishabh', venue: 'Hotel Alishan Celebration\nWani Road, Krushi Nagar Colony,\nWarora, Maharashtra',
   date: '20261211',                 // all-day event, YYYYMMDD
   audioSrc: 'wedding-song.mp3', // wedding song played by the music control
   rsvpWhatsApp: '',                 // e.g. '919876543210' (country code + number, digits only)
@@ -872,7 +875,7 @@ if (calBtn) calBtn.addEventListener('click', () => {
   const ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Wedding Invitation//EN', 'BEGIN:VEVENT',
     `UID:wedding-${d}@invitation`, `DTSTAMP:${new Date().toISOString().replace(/[-:]/g, '').split('.')[0]}Z`,
     `DTSTART;VALUE=DATE:${d}`, `DTEND;VALUE=DATE:${next}`,
-    `SUMMARY:${tr('calSummary')}`, `LOCATION:${tr('venue')}`,
+    `SUMMARY:${tr('calSummary')}`, `LOCATION:${tr('venue').replace(/\n/g, ', ').replace(/,/g, '\\,')}`,
     `DESCRIPTION:${tr('calDesc')}`, 'END:VEVENT', 'END:VCALENDAR'].join('\r\n');
   const a = Object.assign(document.createElement('a'), { href: URL.createObjectURL(new Blob([ics], { type: 'text/calendar;charset=utf-8' })), download: 'wedding-invitation.ics' });
   document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 2000);
@@ -882,11 +885,11 @@ if (calBtn) calBtn.addEventListener('click', () => {
 const I18N = {
   en: {
     sh0: 'Vakratunda Mahakaya,', sh1: 'Suryakoti Samaprabha', sh2: 'Nirvighnam Kurume Deva,', sh3: 'Sarvakaryeshu Sarvada',
-    together: 'TOGETHER WITH OUR FAMILIES', bride: 'Vaishnavi', groom: 'Rishabh', venue: 'Alishan',
+    together: 'TOGETHER WITH OUR FAMILIES', bride: 'Vaishnavi', groom: 'Rishabh', venue: 'Hotel Alishan Celebration\nWani Road, Krushi Nagar Colony,\nWarora, Maharashtra',
     invite: 'Invite you to celebrate their wedding',
     save: 'SAVE THE DATE', fri: 'Friday,', dt: '11 December', yr: '2026', venueLbl: 'VENUE',
     m0: 'With love, we invite', m1: 'you to be part of our', m2: 'special day.',
-    sub: '11 DECEMBER 2026 • ALISHAN', rsvp: 'RSVP', cal: 'Add to Calendar',
+    sub: '11 DECEMBER 2026\n6:31 EVENING', rsvp: 'RSVP', cal: 'Add to Calendar',
     rTitle: 'Kindly Reply', rSub: 'We would love to know if you can join us.', rName: 'Your name', rGuests: 'Number of guests',
     yes: 'Joyfully Accept', no: 'Regretfully Decline', close: 'Close',
     tTitle: 'Thank You', tMsg: 'Your response has been noted.',
@@ -899,11 +902,11 @@ const I18N = {
   },
   mr: {
     sh0: 'वक्रतुण्ड महाकाय,', sh1: 'सूर्यकोटि समप्रभ', sh2: 'निर्विघ्नं कुरु मे देव,', sh3: 'सर्वकार्येषु सर्वदा',
-    together: 'आमच्या कुटुंबीयांसह', bride: 'वैष्णवी', groom: 'ऋषभ', venue: 'अलिशान',
+    together: 'आमच्या कुटुंबीयांसह', bride: 'वैष्णवी', groom: 'ऋषभ', venue: 'Hotel Alishan Celebration\nWani Road, Krushi Nagar Colony,\nWarora, Maharashtra',
     invite: 'आपणास त्यांच्या शुभविवाहाचे सस्नेह निमंत्रण',
     save: 'तारीख राखून ठेवा', fri: 'शुक्रवार,', dt: '११ डिसेंबर', yr: '२०२६', venueLbl: 'स्थळ',
     m0: 'प्रेमाने आम्ही आपणास', m1: 'आमच्या खास दिवसाचा', m2: 'भाग होण्याचे आमंत्रण देतो.',
-    sub: '११ डिसेंबर २०२६ • अलिशान', rsvp: 'उपस्थिती कळवा', cal: 'कॅलेंडरमध्ये जोडा',
+    sub: '११ डिसेंबर २०२६\nसायंकाळी ६:३१', rsvp: 'उपस्थिती कळवा', cal: 'कॅलेंडरमध्ये जोडा',
     rTitle: 'कृपया कळवा', rSub: 'आपण आमच्यासोबत सामील होऊ शकाल का, हे जाणून घ्यायला आम्हाला आवडेल.', rName: 'आपले नाव', rGuests: 'पाहुण्यांची संख्या',
     yes: 'आनंदाने येईन', no: 'क्षमस्व, येता येणार नाही', close: 'बंद करा',
     tTitle: 'धन्यवाद', tMsg: 'आपला प्रतिसाद नोंदवला गेला आहे.',
